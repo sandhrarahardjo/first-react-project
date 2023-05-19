@@ -1,18 +1,26 @@
-.App {
-  text-align: center;
-  padding: 10px;
-  background-color: cornflowerblue;
+.container {
+  background-color: rgb(58, 62, 69);
+  display: flex;
+  flex-flow: column wrap;
 }
 
-.app .jumbotron{
+.jumbotron {
   text-align: center;
+  background-color: rgb(32, 48, 78);
+  font-style: bold;
+  color: white;
 }
-.app .card{
+.card {
+  background-color: lightcyan;
   margin-bottom: 10px;
+  display: flex;
+  flex-flow: column wrap;
+  flex-wrap: wrap;
 }
 
-.app .card-header{
-  color: blue;
+.card-header {
+  color: white;
+  background-color: darkblue;
   font-weight: bold;
   font-style: italic;
 }
@@ -36,7 +44,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: blue;
 }
 
 .App-link {
