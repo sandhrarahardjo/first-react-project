@@ -5,7 +5,8 @@ class App extends Component {
     super(props);
     this.state = {
       posts: []
-    }}
+    }
+  }
 
 componentDidMount() {
   const url = "https://jsonplaceholder.typicode.com/posts?_start=0&_limit=30";
@@ -13,10 +14,11 @@ componentDidMount() {
   fetch(url)
     .then(response => response.json())
     .then(json => this.setState({ posts: json }))
-  }
-    
+}
+
 render() {
   const { posts } = this.state;
+
     return (
       <div className="container">
         <div class="jumbotron">
@@ -30,9 +32,9 @@ render() {
             <div className="card-body">
               <p className="card-text">{post.body}</p>
             </div>
-          </div>
-        ))}
       </div>
+    ))}
+    </div>
     );
   }
 }

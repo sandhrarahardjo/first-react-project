@@ -1,7 +1,7 @@
 .container {
-  background-color: rgb(58, 62, 69);
-  display: flex;
-  flex-flow: column wrap;
+  background-color: rgb(58, 62, 69); display: flex;
+  flex: auto;
+  flex-wrap: wrap;
 }
 
 .jumbotron {
@@ -9,53 +9,25 @@
   background-color: rgb(32, 48, 78);
   font-style: bold;
   color: white;
+  width: 1090px;
 }
+
 .card {
   background-color: lightcyan;
+  width: 250px;
   margin-bottom: 10px;
   display: flex;
-  flex-flow: column wrap;
   flex-wrap: wrap;
+  flex-direction: row;
+  margin: 10px;
+  margin-left: 15px;
 }
 
 .card-header {
   color: white;
+  width: 250px;
   background-color: darkblue;
   font-weight: bold;
   font-style: italic;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: blue;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  justify-content: space-around;
 }
