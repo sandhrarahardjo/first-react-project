@@ -1,27 +1,30 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      posts : []
+      posts: []
     }
   }
-  componentDidMount() {
-    const url = "https://jsonplaceholder.typicode.com/posts";
-    fetch(url)
+
+componentDidMount() {
+  const url = "https://jsonplaceholder.typicode.com/posts?_start=0&_limit=30";
+
+  fetch(url)
     .then(response => response.json())
     .then(json => this.setState({ posts: json }))
-  }
-  render(){
-    const{posts}= this.state;
-    return(
-      
-        <div className="container">
-          <div class="jumbotron">
-            <h2 class="display-4">Postings</h2>
-          </div>
-          {posts.map((post) => (
+}
+
+render() {
+  const { posts } = this.state;
+
+    return (
+      <div className="container">
+        <div class="jumbotron">
+          <h1 class="display-4">Postings</h1>
+        </div>
+        {posts.slice(0, 15).map((post) => (
           <div className="card" key={post.id}>
             <div className="card-header">
               #{post.id} {post.title}
@@ -29,11 +32,10 @@ class App extends Component {
             <div className="card-body">
               <p className="card-text">{post.body}</p>
             </div>
-          </div>
-        ))}
       </div>
+    ))}
+    </div>
     );
   }
 }
-
 export default App;
