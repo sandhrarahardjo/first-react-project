@@ -1,0 +1,19 @@
+.card {
+    background-color: lightcyan;
+    width: 240px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 10px;
+    margin-left: 15px;
+}
+  
+.card-header {
+    color: white;
+    width: 240px;
+    background-color: darkblue;
+    font-weight: bold;
+    font-style: italic;
+    justify-content: space-around;
+}

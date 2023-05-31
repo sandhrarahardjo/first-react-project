@@ -3,31 +3,3 @@
   flex: auto;
   flex-wrap: wrap;
 }
-
-.jumbotron {
-  text-align: center;
-  background-color: rgb(32, 48, 78);
-  font-style: bold;
-  color: white;
-  width: 1090px;
-}
-
-.card {
-  background-color: lightcyan;
-  width: 250px;
-  margin-bottom: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  margin: 10px;
-  margin-left: 15px;
-}
-
-.card-header {
-  color: white;
-  width: 250px;
-  background-color: darkblue;
-  font-weight: bold;
-  font-style: italic;
-  justify-content: space-around;
-}
