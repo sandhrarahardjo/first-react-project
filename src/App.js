@@ -1,41 +1,63 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useState, useEffect } from 'react';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      posts: []
-    }
-  }
+const _renderJumbotron = () => (
+    <div class="Jumbotron">
+        <h1 class="display-4">Postings</h1>
+    </div>
+ );
 
-componentDidMount() {
-  const url = "https://jsonplaceholder.typicode.com/posts?_start=0&_limit=30";
+const _renderCardHeader = (post) => {
+    const {id,title} = post;
+    
+    return (
+        <div className="card-header">
+            #{id}{title}
+        </div>
+    )
+};
 
-  fetch(url)
-    .then(response => response.json())
-    .then(json => this.setState({ posts: json }))
-}
-
-render() {
-  const { posts } = this.state;
+const _renderCardBody = (post) => {
+    const {body} = post;
 
     return (
-      <div className="container">
-        <div class="jumbotron">
-          <h1 class="display-4">Postings</h1>
+        <div className="card-body">
+            <p className="card-text">{body}</p>
         </div>
+    )
+};
+
+const _renderCard = (posts) => (
+    <div className="container">
         {posts.slice(0, 15).map((post) => (
-          <div className="card" key={post.id}>
-            <div className="card-header">
-              #{post.id} {post.title}
+            <div className="card" key={post.id}>
+                {_renderCardHeader(post)}
+                {_renderCardBody(post)}
             </div>
-            <div className="card-body">
-              <p className="card-text">{post.body}</p>
-            </div>
-      </div>
-    ))}
+        ))}
     </div>
-    );
-  }
+)
+
+const usePostList = (setPosts) => {
+
+  useEffect(() => {
+      fetch("https://jsonplaceholder.typicode.com/posts?_start=0&_limit=30")
+      .then(response => response.json())
+      .then(result => setPosts(result));
+  }, []);
+
+ }
+
+const App = () => {
+    const [posts, setPosts] = useState([]);
+    usePostList(setPosts);
+
+    return (
+        <div className="container">
+            {_renderJumbotron()}
+            {_renderCard(posts)}
+        </div>
+    )
 }
+
 export default App;
