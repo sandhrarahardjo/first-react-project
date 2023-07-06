@@ -6,7 +6,6 @@
 }
 
 .jumbotron {
-  text-align: center;
   background-color: rgb(32, 48, 78);
   font-style: bold;
   color: white;
@@ -14,8 +13,6 @@
 }
 
 .display-4 {
-  text-align: center;
-  align-items: center;
   color: white;
 }
 
