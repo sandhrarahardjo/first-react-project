@@ -1,41 +1,91 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useState, useEffect } from 'react';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      posts: []
-    }
-  }
+import {Routes, Route, useNavigate} from 'react-router-dom';
 
-componentDidMount() {
-  const url = "https://jsonplaceholder.typicode.com/posts?_start=0&_limit=30";
+import Profile from "./Profile"
 
-  fetch(url)
-    .then(response => response.json())
-    .then(json => this.setState({ posts: json }))
-}
+const _renderJumbotron = () => (
+  <div class="Jumbotron">
+      <h1 class="display-4">Postings</h1>
+  </div>
+);
 
-render() {
-  const { posts } = this.state;
-
-    return (
-      <div className="container">
-        <div class="jumbotron">
-          <h1 class="display-4">Postings</h1>
-        </div>
-        {posts.slice(0, 15).map((post) => (
-          <div className="card" key={post.id}>
-            <div className="card-header">
-              #{post.id} {post.title}
-            </div>
-            <div className="card-body">
-              <p className="card-text">{post.body}</p>
-            </div>
+const _renderCardHeader = (post) => {
+  const {id,title} = post;
+  
+  return (
+      <div className="card-header">
+          #{id}{title}
       </div>
-    ))}
-    </div>
-    );
-  }
+  )
+};
+
+const _renderCardBody = (post) => {
+  const {body} = post;
+
+  return (
+      <div className="card-body">
+          <p className="card-text">{body}</p>
+      </div>
+  )
+};
+
+const _renderCard = (posts) => (
+  <div className="container">
+      {posts.slice(0, 15).map((post) => (
+          <div className="card" key={post.id}>
+              {_renderCardHeader(post)}
+              {_renderCardBody(post)}
+          </div>
+      ))}
+  </div>
+)
+
+const usePostList = (setPosts) => {
+
+useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/posts?_start=0&_limit=30")
+    .then(response => response.json())
+    .then(result => setPosts(result));
+}, []);
 }
-export default App;
+
+const Postings = () => {
+
+  const [posts, setPosts] = useState([]);
+  usePostList(setPosts);
+return (
+  <div className="container">
+      {_renderJumbotron()}
+      {_renderCard(posts)}
+  </div>
+  )
+}
+
+export default function App() {
+
+  const navigate = useNavigate();
+
+  const navigateToProfile = () => {
+    navigate('/profile');
+  };
+
+  const navigatePostings = () => {
+    navigate('/');
+  };
+
+  return (
+    <div>
+      <div>
+        <button onClick={navigatePostings}>Postings</button>
+        <button onClick={navigateToProfile}>Profile</button>
+
+        <Routes>
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/" element={<Postings />} />
+        </Routes>
+      </div>
+    </div>
+  );
+}

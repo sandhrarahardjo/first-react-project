@@ -2,19 +2,23 @@
   background-color: rgb(58, 62, 69); display: flex;
   flex: auto;
   flex-wrap: wrap;
+  width: 1090px;
 }
 
 .jumbotron {
-  text-align: center;
   background-color: rgb(32, 48, 78);
   font-style: bold;
   color: white;
-  width: 1090px;
+  align-content: space-between;
+}
+
+.display-4 {
+  color: white;
 }
 
 .card {
   background-color: lightcyan;
-  width: 250px;
+  width: 230px;
   margin-bottom: 10px;
   display: flex;
   flex-wrap: wrap;
@@ -25,7 +29,8 @@
 
 .card-header {
   color: white;
-  width: 250px;
+  width: 230px;
+  height: 120px;
   background-color: darkblue;
   font-weight: bold;
   font-style: italic;
